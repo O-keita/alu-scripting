@@ -1,2 +1,2 @@
 #!/usr/bin/env ruby
-/school/gm
+/School/gm
