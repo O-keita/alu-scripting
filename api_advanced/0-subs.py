@@ -1,6 +1,10 @@
+#!usr/bin/python3
+"""Lets do this"""
 import requests
 
+
 def number_of_subscribers(subreddit):
+    """this is a function"""
     # Reddit API endpoint for getting subreddit information
     api_url = f"https://www.reddit.com/r/{subreddit}/about.json"
 
