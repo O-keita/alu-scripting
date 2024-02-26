@@ -11,20 +11,23 @@ def number_of_subscribers(subreddit):
     url = f'https://www.reddit.com/r/{subreddit}/about.json'
     header = {"User-Agent": "Just a sample school"}
 
-    response = requests.get(url, headers=header)
+    response = requests.get(url, headers=header, allow_redirects=False)
 
     if response.status_code == 200:
         data = response.json()
-        subs = data.get('data').get('subscribers')
+        subs = data.get('data').get('subscribers', 0)
         print(subs)
         return subs
 
     elif response.status_code == 404:
-        return None
+        print(0)
+        return 0
     else:
-        return "Error"
+        print("error")
+        return 0
 
 
 if __name__ == "__main__":
+    """main"""
     subreddit_name = sys.argv[1]
     result = number_of_subscribers(subreddit_name)
