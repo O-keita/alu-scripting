@@ -1,38 +1,30 @@
 #!/usr/bin/python3
-"""Lets do this"""
+"""Getting Started with Reddit"""
 
 import requests
+import sys
 
 
 def number_of_subscribers(subreddit):
-    """this is a function"""
+    """This is the main function"""
 
-    # Reddit API endpoint for getting subreddit information
-    api_url = f"https://www.reddit.com/r/{subreddit}/about.json"
+    url = f'https://www.reddit.com/r/{subreddit}/about.json'
+    header = {"User-Agent": "Just a sample school"}
 
-    # Set a custom User-Agent to avoid Too Many Requests error
-    headers = {'User-Agent': 'CustomUserAgent'}
+    response = requests.get(url, headers=header)
 
-    # Make the request to the Reddit API
-    response = requests.get(api_url, headers=headers)
-
-    # Check if the request was successful (status code 200)
     if response.status_code == 200:
-        # Parse the JSON response
-        subreddit_info = response.json()
+        data = response.json()
+        subs = data.get('data').get('subscribers')
+        print(subs)
+        return subs
 
-        # Extract and return the number of subscribers
-        return subreddit_info['data']['subscribers']
     elif response.status_code == 404:
-        # If the subreddit is not found, return 0
-        return 0
+        return None
     else:
-        # If there is an error, print the error message and return 0
-        print(f"Error: {response.status_code}, {response.text}")
-        return 0
+        return "Error"
 
-# Example usage
-subreddit_name = 'python'  # Change this to the subreddit you're interested in
-subscribers_count = number_of_subscribers(subreddit_name)
 
-print(f"The number of subscribers in r/{subreddit_name}: {subscribers_count}")
+if __name__ == "__main__":
+    subreddit_name = sys.argv[1]
+    result = number_of_subscribers(subreddit_name)
