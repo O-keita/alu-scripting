@@ -4,7 +4,9 @@ import requests
 
 
 def number_of_subscribers(subreddit):
-    """Return the number of subscribers for the given subreddit."""
+    """Return number of subscribers if @subreddit is valid subreddit.
+    if not return 0."""
+
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
     headers = {'User-Agent': 'My User Agent 1.0'}
     response = requests.get(url, headers=headers, allow_redirects=False)
