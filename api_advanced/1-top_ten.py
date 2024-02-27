@@ -14,16 +14,29 @@ def top_ten(subreddit):
 
     if response.status_code == 200:
 
-        data = response.json().get('data').get('children')
+        data = response.json().get('data', {}).get('children', [])
 
-        for single_data in data:
+        if data:
+                    
+                for single_data in data:
 
-            title = single_data.json().get('data').get('title')
+                    title = single_data.get('data', {}).get('title', None)
 
-            print(title)
+                    if title:
+                        
 
-        return title
+                        print(title)
+                    else:
+                         print(None)
+
+
+
+                return title
+        else:
+             print(None)
+             return None
 
     else:
         return_value = None
+        print(return_value)
         return return_value
