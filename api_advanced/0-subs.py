@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Script that fetch 10 hot post for a given subreddit."""
+
 import requests
 
 
