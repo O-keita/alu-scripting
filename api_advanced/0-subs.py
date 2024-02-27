@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """
 reddit_api_client.py
 A simple module for interacting with the Reddit API.
