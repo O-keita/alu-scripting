@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-0-main proper documentation
+0-main
 """
 import sys
 
