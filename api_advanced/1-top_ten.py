@@ -32,4 +32,3 @@ def top_ten(subreddit):
 
     except requests.RequestException as e:
         print(f"Error fetching data: {e}")
-
