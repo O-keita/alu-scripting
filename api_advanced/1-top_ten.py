@@ -1,34 +1,41 @@
 #!/usr/bin/python3
-"""Script that fetch 10 hot post for a given subreddit."""
+"""Documented the main module"""
+
 import requests
 
 
 def top_ten(subreddit):
-    """
-    Print the titles of the first 10 hot posts from a subreddit.
+    """documented the function """
 
-    Parameters:
-    - subreddit (str): The name of the subreddit.
-
-    Returns:
-    None
-    """
-    headers = {'User-Agent': 'My User Agent 1.0'}
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
-    params = {'limit': 10}  # Limiting to 10 posts
+
+    headers = {"User-Agent":"Just practicing"}
+
+    params = {'limit': 10}
 
     try:
-        response = requests.get(url, headers=headers, params=params, allow_redirects=False)
+        response = requests.get(url, headers=headers, params=params)
 
         if response.status_code == 200:
-            data = response.json().get('data', {}).get('children', [])
-            for post in data:
-                title = post.get('data', {}).get('title')
-                print(title)
-        elif response.status_code == 404:
-            print(f"Subreddit '{subreddit}' not found.")
-        else:
-            print(f"Failed to fetch data. Status code: {response.status_code}")
 
+            datas = response.json().get('data').get('children')
+
+            if datas:
+
+                for data in datas:
+
+                    title = data.get('data').get('title')
+
+                    print(title)
+
+                return title
+                
+            else:
+                return 0
+            
+        else:
+            return 0
+        
     except requests.RequestException as e:
-        print(f"Error fetching data: {e}")
+        print(e)
+    
