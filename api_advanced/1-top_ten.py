@@ -9,7 +9,8 @@ def top_ten(subreddit):
 
     headers = {'User-Agent': 'just checking'}
     subreddit_url = "https://reddit.com/r/{}.json".format(subreddit)
-    response = requests.get(subreddit_url, headers=headers, params={'limit':10})
+    response = requests.get(subreddit_url,
+                            headers=headers, params={'limit': 10})
 
     if response.status_code == 200:
 
@@ -21,10 +22,8 @@ def top_ten(subreddit):
 
             print(title)
 
-        return title        
-            
+        return title
+
     else:
-        return_value =None
-
+        return_value = None
         return return_value
-
