@@ -1,6 +1,20 @@
+#!/usr/bin/python3
+
+"""
+reddit_api_client.py
+A simple module for interacting with the Reddit API.
+
+This module provides functions to query the Reddit API and retrieve information about subreddits.
+
+Usage:
+1. number_of_subscribers(subreddit): Returns the number of subscribers for a given subreddit.
+
+Note: No authentication is necessary for most features of the Reddit API. Ensure a custom User-Agent is set.
+"""
+
 import requests
 
-def get_subreddit_subscribers(subreddit):
+def number_of_subscribers(subreddit):
     """
     Return the number of subscribers for the given subreddit.
 
